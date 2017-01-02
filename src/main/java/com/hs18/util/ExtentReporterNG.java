@@ -30,14 +30,24 @@ public class ExtentReporterNG implements IReporter {
 	Properties prop;
 	String home;
 	private String outputFileName;
+	
 
 	public ExtentReporterNG(String outputFile) {
+		if(outputFile==null)
+		{
+			this.outputFileName="";
+		}
+		else
 		this.outputFileName = outputFile;
 	}
+
+	public ExtentReporterNG() {
+		
+		this.outputFileName="";
+		
+	}
 	
-//	public ExtentReporterNG() {
-//		
-//	}
+
 
 	@Override
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
@@ -51,8 +61,14 @@ public class ExtentReporterNG implements IReporter {
 			e.getLocalizedMessage();
 		}
 		home = prop.getProperty("home");
+		if(outputFileName.equals(""))
+		{
+			
+			outputFileName=Browser.data.get().get("fileOutput");
+			
+		}		
 		extent = new ExtentReports(home + File.separator + "/src/main/webapp/" + outputFileName, true);
-
+		
 		for (ISuite suite : suites) {
 			Map<String, ISuiteResult> result = suite.getResults();
 

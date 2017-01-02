@@ -167,7 +167,7 @@ public class Formaction extends HttpServlet {
 			suites.add(testngXmlCreation(userData));
 			TestNG runner = new TestNG();
 			runner.addListener(listener);
-			runner.addListener(listner2);
+			//runner.addListener(listner2);
 			runner.addListener(listner3);
 			runner.setXmlSuites(suites);
 			runner.run();

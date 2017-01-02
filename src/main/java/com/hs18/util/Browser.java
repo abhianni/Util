@@ -299,6 +299,7 @@ public class Browser {
 			executor.execute(command, resultHandler);
 			System.out.println("Closing node.exe");
 			try {
+				if(!(data.get().get("Browser").equalsIgnoreCase("mobile")))
 				getDriver().quit();
 			} catch (WebDriverException e) {
 				System.out.println(e.getMessage() + "No driver instance exist");
