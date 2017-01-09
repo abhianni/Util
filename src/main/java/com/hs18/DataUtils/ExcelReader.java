@@ -59,7 +59,7 @@ public class ExcelReader {
 	}
 
 	// Write data in a particular column on the provided sheet no
-	public boolean writeExcelFromWeb(ArrayList<String> data, String sheetname,
+	public boolean writeExcel(ArrayList<String> data, String sheetname,
 			int column,String file, String columnName) throws IOException
 
 	{
