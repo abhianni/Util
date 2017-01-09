@@ -60,16 +60,19 @@ public class ExcelReader {
 
 	// Write data in a particular column on the provided sheet no
 	public boolean writeExcelFromWeb(ArrayList<String> data, String sheetname,
-			int column,String file) throws IOException
+			int column,String file, String columnName) throws IOException
 
 	{
+		HSSFRow r;
 		try {
 			HSSFSheet s = w.createSheet(sheetname);
-			for(int i=0;i<data.size();i++)
-			{
-			
-			HSSFRow r = s.createRow(i);
+			r = s.createRow(0);
 			Cell cell = r.createCell(column);
+			cell.setCellValue(columnName);
+			for(int i=1;i<data.size();i++)
+			{			
+			 r = s.createRow(i);
+			cell = r.createCell(column);
 			cell.setCellValue(data.get(i));
 			}
 			fo = new FileOutputStream(file);
