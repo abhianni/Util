@@ -69,7 +69,7 @@ public class ExcelReader {
 			r = s.createRow(0);
 			Cell cell = r.createCell(column);
 			cell.setCellValue(columnName);
-			for(int i=1;i<data.size();i++)
+			for(int i=1;i<=data.size();i++)
 			{			
 			 r = s.createRow(i);
 			cell = r.createCell(column);
