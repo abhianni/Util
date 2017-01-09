@@ -73,7 +73,7 @@ public class ExcelReader {
 			{			
 			 r = s.createRow(i);
 			cell = r.createCell(column);
-			cell.setCellValue(data.get(i));
+			cell.setCellValue(data.get(i-1));
 			}
 			fo = new FileOutputStream(file);
 			w.write(fo);
