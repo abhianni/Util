@@ -26,9 +26,13 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+
 
 public class Action extends Browser {
 
@@ -191,6 +195,23 @@ public class Action extends Browser {
 
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void fluentWaitForElement(By locator)
+	{
+		Wait wait;
+		try
+		{
+			if (getUserData("appName").toLowerCase().equals("mobile")) {
+				wait = new FluentWait(getappium()).withTimeout(90, TimeUnit.SECONDS).pollingEvery(3, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+			} else {
+				wait = new FluentWait(getDriver()).withTimeout(90, TimeUnit.SECONDS).pollingEvery(3, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+			}
+
+		}
+		catch (TimeoutException e) {
+			throw new TimeoutException("Error message:  " + e.getMessage());
+	}
+	}
 	public void doubleClick(By locator)
 	{
 		Actions actions = new Actions(getDriver());
