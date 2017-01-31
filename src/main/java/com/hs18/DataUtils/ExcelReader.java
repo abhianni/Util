@@ -65,14 +65,53 @@ public class ExcelReader {
 	{
 		HSSFRow r;
 		try {
-			HSSFSheet s = w.createSheet(sheetname);
-			r = s.createRow(0);
-			Cell cell = r.createCell(column);
+			HSSFSheet s;
+			if(!(w.getSheet(sheetname) != null))
+			{	
+			 s = w.createSheet(sheetname);
+			}
+			else
+			{
+				s=w.getSheet(sheetname);
+			}
+			if(!(s.getRow(0)!=null))
+			{
+		
+				r = s.createRow(0);
+			}
+			else
+			{
+				r=s.getRow(0);
+			}
+			Cell cell;
+			if(!(r.getCell(column)!=null))
+			{
+			cell= r.createCell(column);
+			}
+			else
+			{
+				cell=r.getCell(column);
+			}
 			cell.setCellValue(columnName);
 			for(int i=1;i<=data.size();i++)
 			{			
-			 r = s.createRow(i);
-			cell = r.createCell(column);
+				if(!(s.getRow(i)!=null))
+				{
+			
+					r = s.createRow(i);
+				}
+				else
+				{
+					r=s.getRow(i);
+				}
+				if(!(r.getCell(column)!=null))
+				{
+				cell= r.createCell(column);
+				}
+				else
+				{
+					cell=r.getCell(column);
+				}
 			cell.setCellValue(data.get(i-1));
 			}
 			fo = new FileOutputStream(file);
