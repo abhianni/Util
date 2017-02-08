@@ -202,9 +202,9 @@ public class Action extends Browser {
 		try
 		{
 			if (getUserData("appName").toLowerCase().equals("mobile")) {
-				wait = new FluentWait(getappium()).withTimeout(90, TimeUnit.SECONDS).pollingEvery(3, TimeUnit.SECONDS);
+				wait = new FluentWait(getappium()).withTimeout(120, TimeUnit.SECONDS).pollingEvery(3, TimeUnit.SECONDS);
 			} else {
-				wait = new FluentWait(getDriver()).withTimeout(90, TimeUnit.SECONDS).pollingEvery(3, TimeUnit.SECONDS);
+				wait = new FluentWait(getDriver()).withTimeout(120, TimeUnit.SECONDS).pollingEvery(3, TimeUnit.SECONDS);
 				try {
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
