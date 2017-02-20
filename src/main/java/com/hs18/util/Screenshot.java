@@ -45,8 +45,8 @@ System.out.println("Screenshot taken");
 			new File(destDir + "/" + destFile);
 			FileUtils.copyFile(scrFile, new File(destDir + "/" + destFile));
 			System.setProperty(ESCAPE_PROPERTY, "false");
-			Reporter.log("<a href='pages" +"/" + destFile
-					+ "'> <img src='pages" + "/" + destFile
+			Reporter.log("<a href='/pages" +"/" + destFile
+					+ "'> <img src='/pages" + "/" + destFile
 					+ "' hight='550' width='649'/> </a>");
 
 		} catch (IOException e) {
